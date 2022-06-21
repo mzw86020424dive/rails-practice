@@ -10,6 +10,12 @@ RUN mkdir /myapp
 WORKDIR /myapp
 # 作成したmyappディレクトリを作業用ディレクトリとして設定
 
+RUN curl -fsSL https://deb.nodesource.com/setup_lts.x | bash - && apt-get install -y nodejs
+# install nodejs(LTS)
+
+RUN npm install --global yarn
+# install yarn
+
 COPY Gemfile /myapp/Gemfile
 COPY Gemfile.lock /myapp/Gemfile.lock
 # ローカルの Gemfile と Gemfile.lock をコンテナ内のmyapp配下にコピー
